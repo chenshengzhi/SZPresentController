@@ -16,6 +16,7 @@
 		24292AB61CE57CE9002EFA38 /* SZPresentControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24292AB51CE57CE9002EFA38 /* SZPresentControllerDemoTests.m */; };
 		24292AC11CE57CE9002EFA38 /* SZPresentControllerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24292AC01CE57CE9002EFA38 /* SZPresentControllerDemoUITests.m */; };
 		24292AD11CE57E19002EFA38 /* SZPresentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24292AD01CE57E19002EFA38 /* SZPresentController.m */; };
+		24292AD41CE5A50C002EFA38 /* SZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24292AD31CE5A50C002EFA38 /* SZDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		24292AC21CE57CE9002EFA38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24292ACF1CE57E19002EFA38 /* SZPresentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPresentController.h; sourceTree = "<group>"; };
 		24292AD01CE57E19002EFA38 /* SZPresentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPresentController.m; sourceTree = "<group>"; };
+		24292AD21CE5A50C002EFA38 /* SZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDemoViewController.h; sourceTree = "<group>"; };
+		24292AD31CE5A50C002EFA38 /* SZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				24292A9F1CE57CE9002EFA38 /* AppDelegate.m */,
 				24292AA11CE57CE9002EFA38 /* ViewController.h */,
 				24292AA21CE57CE9002EFA38 /* ViewController.m */,
+				24292AD21CE5A50C002EFA38 /* SZDemoViewController.h */,
+				24292AD31CE5A50C002EFA38 /* SZDemoViewController.m */,
 				24292AA41CE57CE9002EFA38 /* Main.storyboard */,
 				24292AA71CE57CE9002EFA38 /* Assets.xcassets */,
 				24292AA91CE57CE9002EFA38 /* LaunchScreen.storyboard */,
@@ -288,6 +293,7 @@
 				24292AA01CE57CE9002EFA38 /* AppDelegate.m in Sources */,
 				24292AD11CE57E19002EFA38 /* SZPresentController.m in Sources */,
 				24292A9D1CE57CE9002EFA38 /* main.m in Sources */,
+				24292AD41CE5A50C002EFA38 /* SZDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

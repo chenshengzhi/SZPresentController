@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SZPresentController.h"
+#import "SZDemoViewController.h"
 
 @interface ViewController ()
 
@@ -35,10 +36,12 @@
 }
 
 - (IBAction)show:(id)sender {
-    SZPresentController *vc = [SZPresentController controllerWithContentView:_contentView];
+//    SZPresentController *vc = [SZPresentController controllerWithContentView:_contentView];
+    SZDemoViewController *vc = [[SZDemoViewController alloc] init];
     vc.contentPosition = (SZContentViewPresentedPosition)(_positionSeg.selectedSegmentIndex);
     vc.presentStyle = (SZModalPresentationStyle)(_presentStyleSeg.selectedSegmentIndex);
     vc.dismissStyle = (SZModalPresentationStyle)(_dismissStyleSeg.selectedSegmentIndex);
     [self presentViewController:vc animated:YES completion:nil];
 }
+
 @end

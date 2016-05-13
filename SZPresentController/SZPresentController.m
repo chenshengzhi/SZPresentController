@@ -19,6 +19,12 @@
 
 @implementation SZPresentController
 
++ (instancetype)controllerWithContentView:(UIView *)contentView {
+    SZPresentController *vc = [[SZPresentController alloc] init];
+    vc.contentView = contentView;
+    return vc;
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         // should be set here, or will not work correctly
@@ -26,12 +32,6 @@
         self.modalPresentationStyle = UIModalPresentationCustom;
     }
     return self;
-}
-
-+ (instancetype)controllerWithContentView:(UIView *)contentView {
-    SZPresentController *vc = [[SZPresentController alloc] init];
-    vc.contentView = contentView;
-    return vc;
 }
 
 - (void)viewDidLoad {
@@ -43,8 +43,9 @@
     _dimView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_dimView];
     
-    NSAssert(_contentView, @"no content view");
-    [self.view addSubview:_contentView];
+    if (_contentView) {
+        [self.view addSubview:_contentView];
+    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -58,68 +59,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - SZPresentControllerProtocol -
-- (CGRect)contentViewPresentedFrame {
-    CGRect frame = self.contentView.frame;
-    switch (_contentPosition) {
-        case SZContentViewPresentedPositionBottom: {
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
-            frame.origin.y = self.view.frame.size.height - frame.size.height;
-            return frame;
+#pragma mark - Setters -
+- (void)setContentView:(UIView *)contentView {
+    if (_contentView != contentView) {
+        if (_contentView) {
+            [_contentView removeFromSuperview];
         }
-        case SZContentViewPresentedPositionTop: {
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
-            frame.origin.y = 0;
-            return frame;
-        }
-        case SZContentViewPresentedPositionLeft: {
-            frame.origin.x = 0;
-            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
-            return frame;
-        }
-        case SZContentViewPresentedPositionRight: {
-            frame.origin.x = self.view.frame.size.width - frame.size.width;
-            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
-            return frame;
-        }
-        case SZContentViewPresentedPositionCenter: {
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
-            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
-            return frame;
-        }
-    }
-}
-
-- (CGRect)contentViewWillPresentFrame {
-    return [self contentViewUnvisiableFrameForStyle:_presentStyle];
-}
-
-- (CGRect)contentViewDismissedFrame {
-    return [self contentViewUnvisiableFrameForStyle:_dismissStyle];
-}
-
-- (CGRect)contentViewUnvisiableFrameForStyle:(SZModalPresentationStyle)style {
-    CGRect frame = self.contentView.frame;
-    switch (style) {
-        case SZModalPresentationStyleBottom: {
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
-            frame.origin.y = self.view.frame.size.height;
-            return frame;
-        }
-        case SZModalPresentationStyleTop: {
-            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
-            frame.origin.y = -frame.size.height;
-            return frame;
-        }
-        case SZModalPresentationStyleLeft: {
-            frame.origin.x = -frame.size.width;
-            frame.origin.y = [self contentViewPresentedFrame].origin.y;
-            return frame;
-        }
-        case SZModalPresentationStyleRight: {
-            frame.origin.x = self.view.frame.size.width + frame.size.width;
-            frame.origin.y = [self contentViewPresentedFrame].origin.y;
-            return frame;
+        _contentView = contentView;
+        if ([self isViewLoaded]) {
+            [self.view addSubview:_contentView];
         }
     }
 }
@@ -170,6 +118,72 @@
             [transitionContext completeTransition:YES];
         }];
     }
+}
+
+#pragma mark - content view frame -
+- (CGRect)contentViewPresentedFrame {
+    CGRect frame = self.contentView.frame;
+    switch (_contentPosition) {
+        case SZContentViewPresentedPositionBottom: {
+            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
+            frame.origin.y = self.view.frame.size.height - frame.size.height;
+            return frame;
+        }
+        case SZContentViewPresentedPositionTop: {
+            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
+            frame.origin.y = 0;
+            return frame;
+        }
+        case SZContentViewPresentedPositionLeft: {
+            frame.origin.x = 0;
+            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
+            return frame;
+        }
+        case SZContentViewPresentedPositionRight: {
+            frame.origin.x = self.view.frame.size.width - frame.size.width;
+            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
+            return frame;
+        }
+        case SZContentViewPresentedPositionCenter: {
+            frame.origin.x = self.view.frame.size.width/2 - frame.size.width/2;
+            frame.origin.y = self.view.frame.size.height/2 - frame.size.height/2;
+            return frame;
+        }
+    }
+}
+
+- (CGRect)contentViewUnvisiableFrameForStyle:(SZModalPresentationStyle)style {
+    CGRect frame = self.contentView.frame;
+    switch (style) {
+        case SZModalPresentationStyleBottom: {
+            frame.origin.x = [self contentViewPresentedFrame].origin.x;
+            frame.origin.y = self.view.frame.size.height;
+            return frame;
+        }
+        case SZModalPresentationStyleTop: {
+            frame.origin.x = [self contentViewPresentedFrame].origin.x;
+            frame.origin.y = -frame.size.height;
+            return frame;
+        }
+        case SZModalPresentationStyleLeft: {
+            frame.origin.x = -frame.size.width;
+            frame.origin.y = [self contentViewPresentedFrame].origin.y;
+            return frame;
+        }
+        case SZModalPresentationStyleRight: {
+            frame.origin.x = self.view.frame.size.width + frame.size.width;
+            frame.origin.y = [self contentViewPresentedFrame].origin.y;
+            return frame;
+        }
+    }
+}
+
+- (CGRect)contentViewWillPresentFrame {
+    return [self contentViewUnvisiableFrameForStyle:_presentStyle];
+}
+
+- (CGRect)contentViewDismissedFrame {
+    return [self contentViewUnvisiableFrameForStyle:_dismissStyle];
 }
 
 @end
