@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epi-E4-AIk">
+                                <rect key="frame" x="245" y="304" width="110" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="      show      "/>
+                                <connections>
+                                    <action selector="show:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XJe-sP-gTB"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gik-XR-zyY">
+                                <rect key="frame" x="151" y="70" width="299" height="29"/>
+                                <segments>
+                                    <segment title="Bottom"/>
+                                    <segment title="Top"/>
+                                    <segment title="Left"/>
+                                    <segment title="Right"/>
+                                    <segment title="Center"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OTZ-aM-KQ4">
+                                <rect key="frame" x="181" y="148" width="239" height="29"/>
+                                <segments>
+                                    <segment title="Bottom"/>
+                                    <segment title="Top"/>
+                                    <segment title="Left"/>
+                                    <segment title="Right"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zic-RI-jyw">
+                                <rect key="frame" x="181" y="226" width="239" height="29"/>
+                                <segments>
+                                    <segment title="Bottom"/>
+                                    <segment title="Top"/>
+                                    <segment title="Left"/>
+                                    <segment title="Right"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8U-vU-E23">
+                                <rect key="frame" x="270" y="49" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="present style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogw-M8-PFQ">
+                                <rect key="frame" x="251" y="127" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dismiss style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owB-ya-7u8">
+                                <rect key="frame" x="251" y="205" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gik-XR-zyY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FFc-it-Y4N"/>
+                            <constraint firstItem="gik-XR-zyY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="HKw-Hn-Lc4"/>
+                            <constraint firstItem="OTZ-aM-KQ4" firstAttribute="top" secondItem="gik-XR-zyY" secondAttribute="bottom" constant="50" id="MKi-PC-KaB"/>
+                            <constraint firstItem="epi-E4-AIk" firstAttribute="top" secondItem="zic-RI-jyw" secondAttribute="bottom" constant="50" id="TnM-ZE-UcN"/>
+                            <constraint firstItem="Ogw-M8-PFQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X9v-m4-yYW"/>
+                            <constraint firstItem="epi-E4-AIk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSS-g4-GoU"/>
+                            <constraint firstItem="OTZ-aM-KQ4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z8r-nf-CpH"/>
+                            <constraint firstItem="OTZ-aM-KQ4" firstAttribute="top" secondItem="Ogw-M8-PFQ" secondAttribute="bottom" id="ayE-SF-t5q"/>
+                            <constraint firstItem="r8U-vU-E23" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="biE-FU-nCD"/>
+                            <constraint firstItem="gik-XR-zyY" firstAttribute="top" secondItem="r8U-vU-E23" secondAttribute="bottom" id="gmN-Cv-KXw"/>
+                            <constraint firstItem="zic-RI-jyw" firstAttribute="top" secondItem="OTZ-aM-KQ4" secondAttribute="bottom" constant="50" id="hns-gT-xUj"/>
+                            <constraint firstItem="zic-RI-jyw" firstAttribute="top" secondItem="owB-ya-7u8" secondAttribute="bottom" id="oCC-DU-wQU"/>
+                            <constraint firstItem="owB-ya-7u8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vAD-Nm-nxT"/>
+                            <constraint firstItem="zic-RI-jyw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yk1-u3-ik4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dismissStyleSeg" destination="zic-RI-jyw" id="Qvy-qz-OeW"/>
+                        <outlet property="positionSeg" destination="gik-XR-zyY" id="Ueu-mM-l8f"/>
+                        <outlet property="presentStyleSeg" destination="OTZ-aM-KQ4" id="MCF-Hu-vJ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="414" y="481"/>
+        </scene>
+    </scenes>
+</document>
