@@ -41,6 +41,12 @@
     vc.contentPosition = (SZContentViewPresentedPosition)(_positionSeg.selectedSegmentIndex);
     vc.presentStyle = (SZModalPresentationStyle)(_presentStyleSeg.selectedSegmentIndex);
     vc.dismissStyle = (SZModalPresentationStyle)(_dismissStyleSeg.selectedSegmentIndex);
+    vc.willDismissBlock = ^{
+        NSLog(@"will dismiss");
+    };
+    vc.didDismissBlock = ^{
+        NSLog(@"did dismiss");
+    };
     [self presentViewController:vc animated:YES completion:nil];
 }
 

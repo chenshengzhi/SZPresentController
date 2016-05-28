@@ -108,6 +108,10 @@
             [transitionContext completeTransition:YES];
         }];
     } else {
+        if (self.willDismissBlock) {
+            self.willDismissBlock();
+        }
+        
         CGRect dismissedFrame = [self contentViewDismissedFrame];
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -116,6 +120,10 @@
         } completion:^(BOOL finished) {
             [self.view removeFromSuperview];
             [transitionContext completeTransition:YES];
+            
+            if (self.didDismissBlock) {
+                self.didDismissBlock();
+            }
         }];
     }
 }

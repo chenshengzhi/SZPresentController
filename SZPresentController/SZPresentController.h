@@ -33,6 +33,8 @@ typedef NS_ENUM(NSUInteger, SZModalPresentationStyle) {
 
 @property (nonatomic) SZModalPresentationStyle dismissStyle;
 
+@property (nonatomic, copy) void (^willDismissBlock)(void);
+@property (nonatomic, copy) void (^didDismissBlock)(void);;
 
 + (instancetype)controllerWithContentView:(UIView *)contentView;
 
