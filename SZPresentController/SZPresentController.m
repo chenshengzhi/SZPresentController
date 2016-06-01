@@ -38,11 +38,14 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-    
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    [self.view addGestureRecognizer:tap];
+
     _dimView = [[UIView alloc] initWithFrame:self.view.bounds];
     _dimView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_dimView];
-    
+
     if (_contentView) {
         [self.view addSubview:_contentView];
     }
@@ -55,8 +58,13 @@
     self.contentView.frame = [self contentViewPresentedFrame];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)tapHandler:(UITapGestureRecognizer *)gesture {
+    CGPoint point = [gesture locationInView:self.view];
+    if (CGRectContainsPoint(_contentView.frame, point)) {
+        return;
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - Setters -
