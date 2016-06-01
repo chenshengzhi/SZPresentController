@@ -8,7 +8,7 @@
 
 #import "SZPresentController.h"
 
-@interface SZPresentController ()
+@interface SZPresentController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIView *dimView;
 
@@ -40,6 +40,7 @@
     self.view.backgroundColor = [UIColor clearColor];
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    tap.delegate = self;
     [self.view addGestureRecognizer:tap];
 
     _dimView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -59,12 +60,7 @@
 }
 
 - (void)tapHandler:(UITapGestureRecognizer *)gesture {
-    CGPoint point = [gesture locationInView:self.view];
-    if (CGRectContainsPoint(_contentView.frame, point)) {
-        return;
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Setters -
@@ -77,6 +73,16 @@
         if ([self isViewLoaded]) {
             [self.view addSubview:_contentView];
         }
+    }
+}
+
+#pragma mark - UIGestureRecognizerDelegate -
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    CGPoint point = [touch locationInView:self.view];
+    if (CGRectContainsPoint(_contentView.frame, point)) {
+        return NO;
+    } else {
+        return YES;
     }
 }
 
