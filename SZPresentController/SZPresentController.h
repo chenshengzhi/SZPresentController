@@ -38,4 +38,6 @@ typedef NS_ENUM(NSUInteger, SZModalPresentationStyle) {
 
 + (instancetype)controllerWithContentView:(UIView *)contentView;
 
+- (instancetype)initWithContentView:(UIView *)contentView;
+
 @end

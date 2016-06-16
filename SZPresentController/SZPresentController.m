@@ -25,6 +25,16 @@
     return vc;
 }
 
+- (instancetype)initWithContentView:(UIView *)contentView {
+    if (self = [super init]) {
+        // should be set here, or will not work correctly
+        self.transitioningDelegate = self;
+        self.modalPresentationStyle = UIModalPresentationCustom;
+        self.contentView = contentView;
+    }
+    return self;
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         // should be set here, or will not work correctly
