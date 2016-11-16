@@ -40,6 +40,8 @@
         // should be set here, or will not work correctly
         self.transitioningDelegate = self;
         self.modalPresentationStyle = UIModalPresentationCustom;
+
+        self.dimViewAlphaWhenPresented = 0.4;
     }
     return self;
 }
@@ -126,7 +128,7 @@
         
         CGRect presentedFrame = [self contentViewPresentedFrame];
         [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.dimView.alpha = 0.4;
+            self.dimView.alpha = self.dimViewAlphaWhenPresented;
             self.contentView.frame = presentedFrame;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];
