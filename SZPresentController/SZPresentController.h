@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, SZModalPresentationStyle) {
 
 @interface SZPresentController : UIViewController <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
+@property (nonatomic, strong, readonly) UIView *dimView;
+
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic) SZContentViewPresentedPosition contentPosition;
