@@ -31,6 +31,8 @@
         self.transitioningDelegate = self;
         self.modalPresentationStyle = UIModalPresentationCustom;
         self.contentView = contentView;
+
+        self.dimViewAlphaWhenPresented = 0.4;
     }
     return self;
 }
